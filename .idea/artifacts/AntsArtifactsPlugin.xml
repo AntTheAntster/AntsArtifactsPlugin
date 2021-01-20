@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AntsArtifactsPlugin">
+    <output-path>$PROJECT_DIR$/out/artifacts/AntsArtifactsPlugin</output-path>
+    <root id="archive" name="AntsArtifactsPlugin.jar">
+      <element id="module-output" name="AntsArtifactsPlugin" />
+    </root>
+  </artifact>
+</component>

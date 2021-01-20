@@ -1,0 +1,91 @@
+#Ant's artifacts plugin, made for AsylumMC.
+#For support, join this discord and make a ticket.
+#Discord: https://discord.link/AntsPlugins
+
+#Do not touch this.
+Version: 1.0
+
+
+#Message/Title Settings:
+Prefix: '§5[§3YourServer§5]'
+View Own Gems: '§6Gems: {gems}' #Use {gems} for the amount of gems and {playername} for the player's name
+View Others Gems: "§6{targetname}'s Gems: {gems}" # Use {targetname} for the target players name
+Artifact Bought: "§2You bought a {artifact}!" #Use {artifact} to get the artifact
+
+#Shop Settings
+Shop Title: "§c§lArtifact Shop"
+Shop Size: 54 #Either 9, 18, 27, 36,45, 54
+Fill Empty: true #Fill empty slots with material specified below?
+Fill Material: STAINED_GLASS_PANE #Fill air slots with what material?
+Fill Material Damage: 15 #If providing an item that has multiple colours (Damages), these can be found as the numbers after the ":" or "/" in the Item ID
+
+#Gems Balance item for /gems shop
+GemBalance:
+  ItemID: 388
+  HeadDB ID: 8232 #If head DB is enabled
+  Slot: 45
+
+#Artifact Settings
+Strength:
+  Enabled: true #Use this artifact?
+  Level: 2 #What level of <Potion Effect> do you want the Artifact to give the holder?
+  Artifact Name: '§eStrength Artifact' #Artifact Name
+  Cost: 10 #Cost (In gems) of the Artifacts
+  HeadDB ID: 1111 #The ID of the head from HeadDatabase
+  Slot: 0 #What slot to put the artifact in (Starting from 0)
+
+Speed:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eSpeed Artifact'
+  Cost: 11
+  HeadDB ID: 1112
+  Slot: 1
+
+Haste:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eHaste Artifact'
+  Cost: 12
+  HeadDB ID: 1113
+  Slot: 2
+
+Jump Boost:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eJump Boost Artifact'
+  Cost: 13
+  HeadDB ID: 1114
+  Slot: 3
+
+Health Boost:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eHealth Boost Artifact'
+  Cost: 14
+  HeadDB ID: 1115
+  Slot: 4
+
+Regeneration:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eRegeneration Artifact'
+  Cost: 15
+  HeadDB ID: 1116
+  Slot: 5
+
+Fire Resistance:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eFire Resistance Artifact'
+  Cost: 16
+  HeadDB ID: 1117
+  Slot: 6
+
+Resistance:
+  Enabled: true
+  Level: 2
+  Artifact Name: '§eResistance Artifact'
+  Cost: 17
+  HeadDB ID: 1118
+  Slot: 7
