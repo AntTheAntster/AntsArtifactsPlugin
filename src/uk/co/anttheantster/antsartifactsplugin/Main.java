@@ -45,6 +45,9 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new AddArtifactEffects(), this);
 
         registerEvents();
+
+
+
     }
 
     @Override
