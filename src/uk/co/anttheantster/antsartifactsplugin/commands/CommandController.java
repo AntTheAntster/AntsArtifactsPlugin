@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import uk.co.anttheantster.antsartifactsplugin.Main;
 import uk.co.anttheantster.antsartifactsplugin.files.PlayerDataFile;
+import uk.co.anttheantster.antsartifactsplugin.menus.PlayerGUI;
 
 public class CommandController implements CommandExecutor {
 

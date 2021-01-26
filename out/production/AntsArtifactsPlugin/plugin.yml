@@ -3,6 +3,7 @@ name: AntsArtifactsPlugin
 version: 1.0
 commands:
   gems:
-depend:
-  - HeadDatabase
+softdepend:
+  - MVdWPlaceholderAPI
+  - PlaceholderAPI
 api-version: 1.8.8

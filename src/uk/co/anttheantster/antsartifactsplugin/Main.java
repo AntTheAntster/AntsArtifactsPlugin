@@ -1,5 +1,8 @@
 package uk.co.anttheantster.antsartifactsplugin;
 
+import be.maximvdw.placeholderapi.PlaceholderAPI;
+import be.maximvdw.placeholderapi.PlaceholderReplaceEvent;
+import be.maximvdw.placeholderapi.PlaceholderReplacer;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
@@ -25,9 +28,9 @@ public class Main extends JavaPlugin {
 
         getLogger().info("Plugin Enabled! Version " + pdf.getVersion());
 
-        if (!pm.getPlugin("HeadDatabase").isEnabled()){
-            missingDependencies();
-        }
+        //if (!pm.isPluginEnabled("HeadDatabase")){
+        //    missingDependencies();
+        //}
 
         if (!versionInConfig.equals(versionInPlugin)) {
             versionMismatch();
@@ -39,6 +42,18 @@ public class Main extends JavaPlugin {
         getCommand("gems").setExecutor(new CommandController());
 
         registerEvents();
+
+        new PluginPlaceholders().register();
+
+        if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")){
+            PlaceholderAPI.registerPlaceholder(this, "gems_gemsAmount", new PlaceholderReplacer() {
+                @Override
+                public String onPlaceholderReplace(PlaceholderReplaceEvent placeholderReplaceEvent) {
+
+                    return String.valueOf(PlayerDataFile.get().getInt("Players." + placeholderReplaceEvent.getPlayer().getUniqueId().toString() + ".Gems"));
+                }
+            });
+        }
 
     }
 
@@ -53,6 +68,7 @@ public class Main extends JavaPlugin {
         getLogger().warning("Plugin Version Mismatch! Please join the discord listed in the config.yml or on the spigot page and make a ticket");
         pm.disablePlugin(this);
     }
+
     public void missingDependencies(){
         getLogger().warning("Plugin missing dependencies! Please join the discord listed in config.yml or on the spigot page and make a ticket");
         pm.disablePlugin(this);

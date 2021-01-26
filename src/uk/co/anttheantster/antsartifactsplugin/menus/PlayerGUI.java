@@ -1,4 +1,4 @@
-package uk.co.anttheantster.antsartifactsplugin.commands;
+package uk.co.anttheantster.antsartifactsplugin.menus;
 
 import me.arcaniax.hdb.api.HeadDatabaseAPI;
 import org.bukkit.Bukkit;
@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.plugin.PluginManager;
 import uk.co.anttheantster.antsartifactsplugin.Main;
 import uk.co.anttheantster.antsartifactsplugin.files.PlayerDataFile;
 
@@ -31,12 +32,14 @@ public class PlayerGUI {
         FileConfiguration playerData = PlayerDataFile.get();
         FileConfiguration config = Main.getPlugin(Main.class).getConfig();
 
+        PluginManager pm = Bukkit.getPluginManager();
+
         int gemBalanceSlot = config.getInt("GemBalance.Slot");
         int shopSize = config.getInt("Shop Size");
 
         HeadDatabaseAPI api = new HeadDatabaseAPI();
 
-        ItemStack[] menuItems;
+        ItemStack gemsAmountItem = null;
 
         Player player = (Player) sender;
         String pUUID = player.getUniqueId().toString();
@@ -45,13 +48,22 @@ public class PlayerGUI {
         Inventory inv = Bukkit.createInventory(player, shopSize, guiTitle);
 
         int playerGems = playerData.getInt("Players." + pUUID + ".Gems");
-        ItemStack gemsAmountItem = api.getItemHead(Integer.toString(config.getInt("GemBalance.HeadDB ID")));
+
+        if (pm.isPluginEnabled("HeadDatabase")){
+            gemsAmountItem = api.getItemHead(Integer.toString(config.getInt("GemBalance.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            gemsAmountItem = new ItemStack(Material.getMaterial(config.getInt("GemBalance.Item ID")));
+        }
         ItemMeta gemsAmountMeta = (ItemMeta) gemsAmountItem.getItemMeta();
         gemsAmountMeta.setDisplayName(ChatColor.GOLD + "Gems: " + ChatColor.GREEN + playerGems);
         gemsAmountItem.setItemMeta(gemsAmountMeta);
 
         //Strength Artifact
-        strengthArtifact = api.getItemHead(Integer.toString(config.getInt("Strength.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            strengthArtifact = api.getItemHead(Integer.toString(config.getInt("Strength.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            strengthArtifact = new ItemStack(Material.getMaterial(config.getInt("Strength.Item ID")));
+        }
         ItemMeta strengthMeta = (ItemMeta) strengthArtifact.getItemMeta();
         strengthMeta.setDisplayName(config.getString("Strength.Artifact Name"));
         ArrayList<String> strLore = new ArrayList<String>();
@@ -60,7 +72,11 @@ public class PlayerGUI {
         strengthArtifact.setItemMeta(strengthMeta);
 
         //Speed Artifact
-        speedArtifact = api.getItemHead(Integer.toString(config.getInt("Speed.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            speedArtifact = api.getItemHead(Integer.toString(config.getInt("Speed.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            speedArtifact = new ItemStack(Material.getMaterial(config.getInt("Speed.Item ID")));
+        }
         ItemMeta speedMeta = (ItemMeta) speedArtifact.getItemMeta();
         speedMeta.setDisplayName(config.getString("Speed.Artifact Name"));
         ArrayList<String> spdLore = new ArrayList<String>();
@@ -69,7 +85,11 @@ public class PlayerGUI {
         speedArtifact.setItemMeta(speedMeta);
 
         //Haste Artifact
-        hasteArtifact = api.getItemHead(Integer.toString(config.getInt("Haste.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            hasteArtifact = api.getItemHead(Integer.toString(config.getInt("Haste.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            hasteArtifact = new ItemStack(Material.getMaterial(config.getInt("Haste.Item ID")));
+        }
         ItemMeta hasteMeta = (ItemMeta) hasteArtifact.getItemMeta();
         hasteMeta.setDisplayName(config.getString("Haste.Artifact Name"));
         ArrayList<String> hstLore = new ArrayList<String>();
@@ -78,7 +98,11 @@ public class PlayerGUI {
         hasteArtifact.setItemMeta(hasteMeta);
 
         //Jump Boost Artifact
-        jumpBoostArtifact = api.getItemHead(Integer.toString(config.getInt("Jump Boost.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            jumpBoostArtifact = api.getItemHead(Integer.toString(config.getInt("Jump Boost.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            jumpBoostArtifact = new ItemStack(Material.getMaterial(config.getInt("Jump Boost.Item ID")));
+        }
         ItemMeta jumpBoostMeta = (ItemMeta) jumpBoostArtifact.getItemMeta();
         jumpBoostMeta.setDisplayName(config.getString("Jump Boost.Artifact Name"));
         ArrayList<String> jbLore = new ArrayList<String>();
@@ -87,7 +111,11 @@ public class PlayerGUI {
         jumpBoostArtifact.setItemMeta(jumpBoostMeta);
 
         //Health Boost Artifact
-        healthBoostArtifact = api.getItemHead(Integer.toString(config.getInt("Health Boost.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            healthBoostArtifact = api.getItemHead(Integer.toString(config.getInt("Health Boost.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            healthBoostArtifact = new ItemStack(Material.getMaterial(config.getInt("Health Boost.Item ID")));
+        }
         ItemMeta healthBoostMeta = (ItemMeta) healthBoostArtifact.getItemMeta();
         healthBoostMeta.setDisplayName(config.getString("Health Boost.Artifact Name"));
         ArrayList<String> hbLore = new ArrayList<String>();
@@ -96,7 +124,11 @@ public class PlayerGUI {
         healthBoostArtifact.setItemMeta(healthBoostMeta);
 
         //Regeneration Artifact
-        regenerationArtifact = api.getItemHead(Integer.toString(config.getInt("Regeneration.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            regenerationArtifact = api.getItemHead(Integer.toString(config.getInt("Regeneration.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            regenerationArtifact = new ItemStack(Material.getMaterial(config.getInt("Regeneration.Item ID")));
+        }
         ItemMeta regenMeta = (ItemMeta) regenerationArtifact.getItemMeta();
         regenMeta.setDisplayName(config.getString("Regeneration.Artifact Name"));
         ArrayList<String> regLore = new ArrayList<String>();
@@ -105,7 +137,11 @@ public class PlayerGUI {
         regenerationArtifact.setItemMeta(regenMeta);
 
         //Fire Resistance Artifact
-        fireResistanceArtifact = api.getItemHead(Integer.toString(config.getInt("Fire Resistance.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            fireResistanceArtifact = api.getItemHead(Integer.toString(config.getInt("Fire Resistance.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            fireResistanceArtifact = new ItemStack(Material.getMaterial(config.getInt("Fire Resistance.Item ID")));
+        }
         ItemMeta fireMeta = (ItemMeta) fireResistanceArtifact.getItemMeta();
         fireMeta.setDisplayName(config.getString("Fire Resistance.Artifact Name"));
         ArrayList<String> fireLore = new ArrayList<String>();
@@ -114,7 +150,11 @@ public class PlayerGUI {
         fireResistanceArtifact.setItemMeta(fireMeta);
 
         //Resistance Artifact
-        resistanceArtifact = api.getItemHead(Integer.toString(config.getInt("Resistance.HeadDB ID")));
+        if (pm.isPluginEnabled("HeadDatabase")){
+            resistanceArtifact = api.getItemHead(Integer.toString(config.getInt("Resistance.HeadDB ID")));
+        } else if (!pm.isPluginEnabled("HeadDatabase")){
+            resistanceArtifact = new ItemStack(Material.getMaterial(config.getInt("Resistance.Item ID")));
+        }
         ItemMeta resistMeta = (ItemMeta) resistanceArtifact.getItemMeta();
         resistMeta.setDisplayName(config.getString("Resistance.Artifact Name"));
         ArrayList<String> resLore = new ArrayList<String>();

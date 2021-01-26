@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import uk.co.anttheantster.antsartifactsplugin.Main;
-import uk.co.anttheantster.antsartifactsplugin.commands.PlayerGUI;
+import uk.co.anttheantster.antsartifactsplugin.menus.PlayerGUI;
 import uk.co.anttheantster.antsartifactsplugin.files.PlayerDataFile;
 
 import java.util.ArrayList;
