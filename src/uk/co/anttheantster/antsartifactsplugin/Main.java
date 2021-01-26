@@ -43,7 +43,6 @@ public class Main extends JavaPlugin {
 
         registerEvents();
 
-        new PluginPlaceholders().register();
 
         if (Bukkit.getPluginManager().isPluginEnabled("MVdWPlaceholderAPI")){
             PlaceholderAPI.registerPlaceholder(this, "gems_gemsAmount", new PlaceholderReplacer() {
