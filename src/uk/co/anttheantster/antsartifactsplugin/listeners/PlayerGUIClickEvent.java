@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import uk.co.anttheantster.antsartifactsplugin.Main;
@@ -24,21 +25,21 @@ public class PlayerGUIClickEvent implements Listener {
     String fireResistanceArtifactName = config.getString("Fire Resistance.Artifact Name");
     String resistanceArtifactName = config.getString("Resistance.Artifact Name");
 
-    @EventHandler
-    public void playerGUIClickEvent(InventoryClickEvent e){
+    @EventHandler (priority = EventPriority.HIGHEST)
+    public void playerGUIClickEvent(InventoryClickEvent e) {
 
         String artifactBoughtRAW = config.getString("Artifact Bought");
 
         Player player = (Player) e.getWhoClicked();
 
-        if (e.getClickedInventory().getTitle().equalsIgnoreCase(config.getString("Shop Title"))){
+        if (e.getClickedInventory().getTitle().equalsIgnoreCase(config.getString("Shop Title"))) {
 
             int playerGems = playerData.getInt("Players." + player.getUniqueId().toString() + ".Gems");
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(strengthArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(strengthArtifactName)) {
                 int cost = config.getInt("Strength.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     StrengthArtifact.giveArtifact(player);
@@ -49,10 +50,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(speedArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(speedArtifactName)) {
                 int cost = config.getInt("Speed.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     SpeedArtifact.giveArtifact(player);
@@ -63,10 +64,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(hasteArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(hasteArtifactName)) {
                 int cost = config.getInt("Haste.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     HasteArtifact.giveArtifact(player);
@@ -77,10 +78,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(jumpBoostArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(jumpBoostArtifactName)) {
                 int cost = config.getInt("Jump Boost.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     JumpBoostArtifact.giveArtifact(player);
@@ -91,10 +92,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(healthBoostArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(healthBoostArtifactName)) {
                 int cost = config.getInt("Health Boost.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     HealthBoostArtifact.giveArtifact(player);
@@ -105,10 +106,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(regenerationArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(regenerationArtifactName)) {
                 int cost = config.getInt("Regeneration.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     RegenerationArtifact.giveArtifact(player);
@@ -119,10 +120,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(fireResistanceArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(fireResistanceArtifactName)) {
                 int cost = config.getInt("Fire Resistance.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     FireResistanceArtifact.giveArtifact(player);
@@ -133,10 +134,10 @@ public class PlayerGUIClickEvent implements Listener {
                 }
             }
 
-            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(resistanceArtifactName)){
+            if (e.getCurrentItem().getItemMeta().getDisplayName().equals(resistanceArtifactName)) {
                 int cost = config.getInt("Resistance.Cost");
 
-                if (!(cost > playerGems)){
+                if (!(cost > playerGems)) {
                     removeGems(player, cost);
 
                     ResistanceArtifact.giveArtifact(player);

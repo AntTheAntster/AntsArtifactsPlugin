@@ -13,6 +13,10 @@ import uk.co.anttheantster.antsartifactsplugin.files.PlayerDataFile;
 import java.util.ArrayList;
 
 public class HealthBoostArtifact {
+
+    public static ItemStack artifact = new ItemStack(PlayerGUI.healthBoostArtifact);
+    public static ItemMeta artifactMeta = (ItemMeta) artifact.getItemMeta();
+
     public static void giveArtifact(Player player){
         FileConfiguration config = Main.getInstance().getConfig();
         FileConfiguration playerData = PlayerDataFile.get();
@@ -20,9 +24,6 @@ public class HealthBoostArtifact {
         HeadDatabaseAPI api = new HeadDatabaseAPI();
 
         String head = config.getString("Speed.HeadDB ID");
-
-        ItemStack artifact = new ItemStack(PlayerGUI.healthBoostArtifact);
-        ItemMeta artifactMeta = (ItemMeta) artifact.getItemMeta();
 
         ArrayList<String> strList = new ArrayList<String>();
         strList.add(ChatColor.GREEN + "Permanent Health Boost Effect");

@@ -15,7 +15,6 @@ public class GemsHelp {
         sender.sendMessage(ChatColor.YELLOW + "/Gems Take <Player> <Amount> - Take gems from a player");
         sender.sendMessage(ChatColor.YELLOW + "/Gems ResetGems <Player> - Reset a players gems to 0");
         sender.sendMessage(ChatColor.YELLOW + "/Gems Reload - Reload the configs");
-        sender.sendMessage(ChatColor.YELLOW + "/Gems Admin - Open the admin gui");
         sender.sendMessage(ChatColor.YELLOW + "/Gems Permissions - Show all the permissions");
 
     }

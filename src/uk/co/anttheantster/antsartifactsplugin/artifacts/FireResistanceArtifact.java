@@ -13,6 +13,10 @@ import uk.co.anttheantster.antsartifactsplugin.files.PlayerDataFile;
 import java.util.ArrayList;
 
 public class FireResistanceArtifact {
+
+    public static ItemStack artifact = new ItemStack(PlayerGUI.fireResistanceArtifact);
+    public static ItemMeta artifactMeta = (ItemMeta) artifact.getItemMeta();
+
     public static void giveArtifact(Player player){
         FileConfiguration config = Main.getInstance().getConfig();
         FileConfiguration playerData = PlayerDataFile.get();
@@ -20,9 +24,6 @@ public class FireResistanceArtifact {
         HeadDatabaseAPI api = new HeadDatabaseAPI();
 
         String head = config.getString("Speed.HeadDB ID");
-
-        ItemStack artifact = new ItemStack(PlayerGUI.fireResistanceArtifact);
-        ItemMeta artifactMeta = (ItemMeta) artifact.getItemMeta();
 
         ArrayList<String> strList = new ArrayList<String>();
         strList.add(ChatColor.GREEN + "Permanent Fire Resistance Effect");

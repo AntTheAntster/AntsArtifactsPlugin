@@ -1,10 +1,8 @@
 main: uk.co.anttheantster.antsartifactsplugin.Main
 name: AntsArtifactsPlugin
 version: 1.0
-author: AntTheAntster
-depend:
-  - HeadDatabase
 commands:
   gems:
-    description: Basis for all admin commands
-  test:
+depend:
+  - HeadDatabase
+api-version: 1.8.8

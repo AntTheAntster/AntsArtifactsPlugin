@@ -40,15 +40,6 @@ public class CommandController implements CommandExecutor {
                 return false;
             }
 
-            if (args[0].equalsIgnoreCase("admin")){
-                if (player.hasPermission("gems.admin.gui")){
-                    AdminGUI.openAdminGUI(sender);
-                    return false;
-                }
-                noPermissionMessage(sender);
-                return false;
-            }
-
             if (args[0].equalsIgnoreCase("give")){
                 if (player.hasPermission("gems.admin.give")){
                     GiveCommand.giveCommand(sender, args);
@@ -109,18 +100,20 @@ public class CommandController implements CommandExecutor {
                 return false;
             }
             Player target = Bukkit.getPlayer(args[0]);
+            if (target != null){
+                if (args[0].equalsIgnoreCase(target.getName())){
+                    if (player.hasPermission("gems.use.others")){
+                        int targetGems = playerData.getInt("Players." + target.getUniqueId().toString() + ".Gems");
+                        String viewOthersGemsRAW = config.getString("View Others Gems");
+                        String viewOthersGems = viewOthersGemsRAW.replace("{targetname}", target.getName());
+                        viewOthersGems = viewOthersGems.replace("{gems}", Integer.toString(targetGems));
+                        player.sendMessage(viewOthersGems);
+                        return false;
+                    }
 
-            if (args[0].equalsIgnoreCase(target.getName())){
-                if (player.hasPermission("gems.use.others")){
-                    int targetGems = playerData.getInt("Players." + target.getUniqueId().toString() + ".Gems");
-                    String viewOthersGemsRAW = config.getString("View Others Gems");
-                    String viewOthersGems = viewOthersGemsRAW.replace("{targetname}", target.getName());
-                    viewOthersGems = viewOthersGems.replace("{gems}", Integer.toString(targetGems));
-                    player.sendMessage(viewOthersGems);
+                    noPermissionMessage(sender);
                     return false;
                 }
-
-                noPermissionMessage(sender);
                 return false;
             }
 

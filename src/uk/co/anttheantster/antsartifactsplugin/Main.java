@@ -4,12 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import uk.co.anttheantster.antsartifactsplugin.listeners.AddArtifactEffects;
+import uk.co.anttheantster.antsartifactsplugin.listeners.*;
 import uk.co.anttheantster.antsartifactsplugin.commands.CommandController;
-import uk.co.anttheantster.antsartifactsplugin.commands.TestCommand;
 import uk.co.anttheantster.antsartifactsplugin.files.PlayerDataFile;
-import uk.co.anttheantster.antsartifactsplugin.listeners.PlayerGUIClickEvent;
-import uk.co.anttheantster.antsartifactsplugin.listeners.onPlayerJoin;
 
 public class Main extends JavaPlugin {
 
@@ -40,13 +37,8 @@ public class Main extends JavaPlugin {
         PlayerDataFile.setup();
 
         getCommand("gems").setExecutor(new CommandController());
-        getCommand("test").setExecutor(new TestCommand());
-
-        pm.registerEvents(new AddArtifactEffects(), this);
 
         registerEvents();
-
-
 
     }
 
@@ -73,6 +65,10 @@ public class Main extends JavaPlugin {
     public void registerEvents(){
         pm.registerEvents(new onPlayerJoin(), this);
         pm.registerEvents(new PlayerGUIClickEvent(), this);
+        pm.registerEvents(new AddArtifactEffects(), this);
+        pm.registerEvents(new PlayerPlaceArtifact(), this);
+        pm.registerEvents(new MoveArtifactEvent(), this);
+        pm.registerEvents(new DropArtifactEvent(), this);
 
     }
 }

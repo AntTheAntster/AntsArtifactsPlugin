@@ -9,7 +9,7 @@ Version: 1.0
 #Message/Title Settings:
 Prefix: '§5[§3YourServer§5]'
 View Own Gems: '§6Gems: {gems}' #Use {gems} for the amount of gems and {playername} for the player's name
-View Others Gems: "§6{targetname}'s Gems: {gems}" # Use {targetname} for the target players name
+View Others Gems: "§6{targetname}'s Gems: {gems}" #Use {targetname} for the target players name
 Artifact Bought: "§2You bought a {artifact}!" #Use {artifact} to get the artifact
 
 #Shop Settings

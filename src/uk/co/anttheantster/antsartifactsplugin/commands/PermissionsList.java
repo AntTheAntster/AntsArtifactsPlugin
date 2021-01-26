@@ -14,7 +14,6 @@ public class PermissionsList {
         sender.sendMessage(ChatColor.YELLOW + "/Gems Take <Player> <Amount> - gems.admin.take");
         sender.sendMessage(ChatColor.YELLOW + "/Gems ResetGems <Player> - gems.admin.reset");
         sender.sendMessage(ChatColor.YELLOW + "/Gems Reload - gems.reload");
-        sender.sendMessage(ChatColor.YELLOW + "/Gems Admin - gems.admin.gui");
         sender.sendMessage(ChatColor.YELLOW + "/Gems Permissions - gems.admin.permissions");
         sender.sendMessage(ChatColor.YELLOW + "/Gems Shop - gems.shop");
 
