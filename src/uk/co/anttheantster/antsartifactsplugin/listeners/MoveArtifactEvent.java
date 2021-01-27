@@ -1,7 +1,6 @@
 package uk.co.anttheantster.antsartifactsplugin.listeners;
 
-import org.bukkit.block.Chest;
-import org.bukkit.block.DoubleChest;
+import org.bukkit.block.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -19,7 +18,7 @@ public class MoveArtifactEvent implements Listener {
 
         Player p = (Player) event.getWhoClicked();
         Inventory clicked = event.getClickedInventory();
-        if (event.getInventory().getHolder() instanceof Chest || event.getInventory().getHolder() instanceof DoubleChest) {
+        if (event.getInventory().getHolder() instanceof Chest || event.getInventory().getHolder() instanceof DoubleChest || event.getInventory().getHolder() instanceof Dispenser || event.getInventory().getHolder() instanceof Hopper || event.getInventory().getHolder() instanceof Dropper) {
 
             if (clicked == event.getWhoClicked().getInventory()) {
 
