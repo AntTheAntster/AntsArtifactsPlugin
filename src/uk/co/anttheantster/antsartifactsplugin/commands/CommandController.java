@@ -30,7 +30,7 @@ public class CommandController implements CommandExecutor {
             int playerGems = playerData.getInt("Players." + player.getUniqueId().toString() + ".Gems");
 
             if (args.length == 0){
-                if (player.hasPermission("gems.use")){
+                if (player.hasPermission("gems.view")){
                     String viewOwnGemsRAW = config.getString("View Own Gems");
                     String viewOwnGems = viewOwnGemsRAW.replace("{playername}", player.getName());
                     viewOwnGems = viewOwnGems.replace("{gems}", Integer.toString(playerGems));
@@ -103,7 +103,7 @@ public class CommandController implements CommandExecutor {
             Player target = Bukkit.getPlayer(args[0]);
             if (target != null){
                 if (args[0].equalsIgnoreCase(target.getName())){
-                    if (player.hasPermission("gems.use.others")){
+                    if (player.hasPermission("gems.view.others")){
                         int targetGems = playerData.getInt("Players." + target.getUniqueId().toString() + ".Gems");
                         String viewOthersGemsRAW = config.getString("View Others Gems");
                         String viewOthersGems = viewOthersGemsRAW.replace("{targetname}", target.getName());
