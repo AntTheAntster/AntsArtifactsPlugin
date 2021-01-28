@@ -52,6 +52,8 @@ public class Main extends JavaPlugin {
                     return String.valueOf(PlayerDataFile.get().getInt("Players." + placeholderReplaceEvent.getPlayer().getUniqueId().toString() + ".Gems"));
                 }
             });
+        } else {
+            return;
         }
 
     }
