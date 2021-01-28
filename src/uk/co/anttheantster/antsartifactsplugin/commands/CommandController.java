@@ -31,7 +31,7 @@ public class CommandController implements CommandExecutor {
 
             if (args.length == 0){
                 if (player.hasPermission("gems.view")){
-                    String viewOwnGemsRAW = config.getString("View Own Gems");
+                    String viewOwnGemsRAW = ChatColor.translateAlternateColorCodes('&', config.getString("View Own Gems"));
                     String viewOwnGems = viewOwnGemsRAW.replace("{playername}", player.getName());
                     viewOwnGems = viewOwnGems.replace("{gems}", Integer.toString(playerGems));
                     player.sendMessage(viewOwnGems);
@@ -105,7 +105,7 @@ public class CommandController implements CommandExecutor {
                 if (args[0].equalsIgnoreCase(target.getName())){
                     if (player.hasPermission("gems.view.others")){
                         int targetGems = playerData.getInt("Players." + target.getUniqueId().toString() + ".Gems");
-                        String viewOthersGemsRAW = config.getString("View Others Gems");
+                        String viewOthersGemsRAW = ChatColor.translateAlternateColorCodes('&', config.getString("View Others Gems"));
                         String viewOthersGems = viewOthersGemsRAW.replace("{targetname}", target.getName());
                         viewOthersGems = viewOthersGems.replace("{gems}", Integer.toString(targetGems));
                         player.sendMessage(viewOthersGems);

@@ -1,6 +1,5 @@
 package uk.co.anttheantster.antsartifactsplugin.listeners;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -21,8 +20,5 @@ public class onPlayerJoin implements Listener {
             config.set("Players." + uuid + ".Gems", 0);
             PlayerDataFile.save();
         }
-
-        PlaceholderAPI.setPlaceholders(player, "%gems_gemsAmount%");
-
     }
 }

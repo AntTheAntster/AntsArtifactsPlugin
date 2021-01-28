@@ -45,7 +45,7 @@ public class PlayerGUI {
         String pUUID = player.getUniqueId().toString();
 
         String guiTitle = config.getString("Shop Title");
-        Inventory inv = Bukkit.createInventory(player, shopSize, guiTitle);
+        Inventory inv = Bukkit.createInventory(player, shopSize, ChatColor.translateAlternateColorCodes('&', guiTitle));
 
         int playerGems = playerData.getInt("Players." + pUUID + ".Gems");
 

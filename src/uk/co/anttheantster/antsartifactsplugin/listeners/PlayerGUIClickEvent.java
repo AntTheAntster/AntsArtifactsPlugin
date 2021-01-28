@@ -28,7 +28,7 @@ public class PlayerGUIClickEvent implements Listener {
     @EventHandler (priority = EventPriority.HIGHEST)
     public void playerGUIClickEvent(InventoryClickEvent e) {
 
-        String artifactBoughtRAW = config.getString("Artifact Bought");
+        String artifactBoughtRAW = ChatColor.translateAlternateColorCodes('&', config.getString("Artifact Bought"));
 
         Player player = (Player) e.getWhoClicked();
 
